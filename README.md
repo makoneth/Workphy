@@ -1,4 +1,9 @@
-# workphy
+# Workphy
+
+![](https://media2.giphy.com/media/TiOtVRx07iGqLmWk6m/giphy.gif?cid=bd71bb7da20cfaf17013e3202023cd68b5a8069c5110ea4a&rid=giphy.gif)
+
+## dotenv
+El proyecto usa dotenv para gestionar la API Key, encontrarás un archivo llamado **.env.example** con la estructura exacta que necesitas, puedes renombrar el archivo a **.env** y colocar tu API Key.
 
 ## Build Setup
 
@@ -16,5 +21,3 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

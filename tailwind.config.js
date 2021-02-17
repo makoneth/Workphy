@@ -14,12 +14,30 @@ module.exports = {
     extend: {
       colors: {
         background: {
-          100: "#1a1a2e",
-          200: "#16213e"
+          100: "#0D1117",
+          200: "#161A22"
         },
-        primary: "#e94560",
-        secondary: "#0f3460"
+        primary: {
+          100: "#ff9292",
+          200: "#ffb4b4"
+        },
+        secondary: "#0f3460",
+        text: "#ffffffde",
+        warning: "#ff4646"
       }
+    },
+
+    rotate: {
+      "-180": "-180deg",
+      "-90": "-90deg",
+      "-45": "-45deg",
+      "0": "0",
+      "20": "20deg",
+      "45": "45deg",
+      "90": "90deg",
+      "135": "135deg",
+      "180": "180deg",
+      "360": "360deg"
     }
   },
   variants: {

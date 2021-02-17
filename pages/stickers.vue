@@ -1,7 +1,7 @@
 <template>
   <div>
     <masonry
-      :cols="{default: 3, 700: 2, 400: 1}"
+      :cols="{default: 4, 700: 2, 400: 1}"
       :gutter="15"
       >
       <card 
@@ -36,7 +36,7 @@
     },
     methods: {
       fetchData() {
-        axios.get(`/gifs/search`, {
+        axios.get(`/stickers/search`, {
           params: {
             q: 'doggi',
           limit: 30,

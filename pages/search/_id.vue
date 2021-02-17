@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-white font-bold text-5xl mb-5">{{ this.id }}</h2>
+    <h2 class="text-white font-bold text-4xl mb-5">{{ this.id }}</h2>
 
     <masonry
       :cols="{default: 3, 700: 2, 400: 1}"
@@ -10,7 +10,9 @@
         v-for="(data, index) in gifs" 
         :key="index"
         :img='data.images.downsized.url'
-        :title='data.title'>
+        :title='data.title'
+        @click="goToGif(data.id)"
+        class="cursor-pointer">
       </card>
     </masonry>
   </div>
@@ -25,6 +27,7 @@ export default {
   component: {
     Card
   },
+  transition: "default",
   async asyncData({ params }) {
     const id = params.id;
     return { id };
@@ -46,13 +49,15 @@ export default {
         }
       })
       .then(res => {
-        console.log(res)
         this.gifs = res.data.data
       })
       .catch(function (error) {
         console.log(error);
       })
-    }
+    },
+    goToGif(id) {
+      this.$router.push({ path: `/gif/${id}` });
+    },
   },
 }
 </script>
