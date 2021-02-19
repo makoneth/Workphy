@@ -8,6 +8,7 @@
         v-for="(data, index) in gifs" 
         :key="index"
         :img='data.images.downsized.url'
+        :alt='data.title'
         :title='data.title'
         @click="goToGif(data.id)"
         class="cursor-pointer">
@@ -31,7 +32,7 @@
         gifs: [],
       }
     },
-    mounted() {
+    created() {
       this.fetchData()
     },
     methods: {

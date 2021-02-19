@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('click')" class="bg-primary-100 hover:bg-primary-200 text-text text-sm font-bold py-3 px-4">
+  <button v-on=$listeners class="bg-primary-100 hover:bg-primary-200 text-text text-sm font-bold py-3 px-4">
     <slot />
   </button>
 </template>

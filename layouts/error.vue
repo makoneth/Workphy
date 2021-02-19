@@ -19,7 +19,7 @@
 
 </script>
 
-<style>
+<style scoped>
   .error-text {
     font-size: 120px;
   }

@@ -7,7 +7,8 @@
         <card 
           v-for="(data, index) in gifs" 
           :key="index" 
-          :img='data.images.downsized.url'>
+          :img='data.images.downsized.url'
+          :alt='data.title'>
         </card>
       </aside>
       <div class="col-span-12 lg:col-span-6 px-5">
@@ -80,27 +81,27 @@
         }],
       }
     },
-    mounted() {
+    created() {
       this.fetchSearch();
     },
     destroyed() {
       this.gifs = []
     },
     methods: {
-      fetchSearch() {
-        axios.get(`/gifs`, {
+      async fetchSearch() {
+        try {
+          const response = await axios.get(`/gifs`, {
             params: {
               ids: this.id,
             }
           })
-          .then(res => {
-            this.gifs = res.data.data
-            this.sharing.url = res.data.data[0].url
-            this.sharing.title = res.data.data[0].title
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+          const {data} = await response;
+          this.gifs = data.data
+          this.sharing.url = data.data[0].url
+          this.sharing.title = data.data[0].title
+        } catch (error) {
+          console.log(error);
+        }
       }
     },
   }
