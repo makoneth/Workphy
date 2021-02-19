@@ -7,7 +7,12 @@
       <NavBar class="col-span-3 lg:col-span-10 w-full"></NavBar>
     </div>
     <div class="grid grid-cols-12 w-full">
-      <Searcher class="col-span-12" />
+      <Searcher
+        :filterParams.sync="filter"
+        placeholder="Search your favorite gifs, woof woof!!"
+        btnText="Search"
+        type="search"
+        class="col-span-12" />
     </div>
   </header>
 </template>
@@ -25,5 +30,15 @@
       NavBar,
       Searcher,
     },
+    data() {
+      return {
+        filter: null
+      }
+    },
+    watch: {
+      filter: (newValue, oldValue) => {
+        // Aqui llamamos la acción o método que necesitemos
+      }
+    }
   }
 </script>

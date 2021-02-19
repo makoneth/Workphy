@@ -1,8 +1,8 @@
 <template>
   <div class="grid grid-cols-12 w-full">
-    <input v-model="searchParams" v-on:keyup.enter="search()" placeholder="Search your favorite gifs, woof woof!!"
+    <input v-model="searchParams" v-on:keyup.enter="action()" :placeholder="placeholder"
       type="search" class="col-span-9 lg:col-span-11 p-3 border bg-white text-background">
-    <Button @click="search()" class="col-span-3 lg:col-span-1">Search</Button>
+    <Button @click="action()" class="col-span-3 lg:col-span-1">{{ btnText }}</Button>
   </div>
 </template>
 
@@ -19,11 +19,41 @@
         searchParams: '',
       }
     },
+    props: {
+      type: {
+        type: String,
+        required: true
+      },
+      path: {
+        type: String,
+        required: false,
+        default: 'search'
+      },
+      btnText: {
+        type: String,
+        required: true,
+        default: 'Search'
+      },
+      placeholder: {
+        type: String,
+        required: true,
+        default: 'Placeholder default'
+      }
+    },
     methods: {
+      action () {
+        // Evaluamos que camino tomar
+        this.type === 'search' && this.search()
+        this.type === 'filter' && this.emmitData()
+      },
+      emmitData() {
+        // Emitimos el modelo al padre
+        this.$emit('update:filterParams', this.searchParams)
+      },
       search() {
         this.saveSearchs();
         this.$router.push({
-          path: `/search/${this.searchParams}`
+          path: `/${this.path}/${this.searchParams}`
         });
         // reseteamos la data para limpiar el input
         this.searchParams = '';
